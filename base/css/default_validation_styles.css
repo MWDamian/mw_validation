@@ -1,0 +1,33 @@
+@charset "utf-8";
+
+.validation_bad{
+	color:#F00;
+	box-shadow:0px 0px 0px 1px #F00;
+}
+.validation_good{
+	color:#37A611;
+	box-shadow:0px 0px 0px 1px #37A611;
+}
+.validation_bad_checkbox{
+	color:#F00;
+	background-image:url(images/input_bad_default.png);
+	background-repeat:no-repeat;
+	background-position:right;
+}
+.validation_good_checkbox{
+	color:#37A611;
+	background-image:url(images/input_good_default.png);
+	background-repeat:no-repeat;
+	background-position:right;
+}
+.validation_cloud{
+	padding:0 10px;
+	background-color:#B10306;
+	border-radius:5px;
+	text-align:center;
+	color:#FFFFFF;
+	position:absolute;
+	z-index:999;
+	display:none;
+}
+

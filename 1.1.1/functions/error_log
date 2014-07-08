@@ -1,0 +1,10 @@
+[27-Feb-2014 10:15:27] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home/marketi4/public_html/misc/validation/1.1.1/functions/check_groupon_kod_as.php on line 25
+[27-Feb-2014 10:15:27] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home/marketi4/public_html/misc/validation/1.1.1/functions/check_groupon_kod_as.php on line 25
+[27-Feb-2014 10:15:27] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home/marketi4/public_html/misc/validation/1.1.1/functions/check_groupon_kod_as.php on line 25
+[27-Feb-2014 10:15:28] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home/marketi4/public_html/misc/validation/1.1.1/functions/check_groupon_kod_as.php on line 25
+[27-Feb-2014 10:37:37] PHP Warning:  mysql_num_rows(): supplied argument is not a valid MySQL result resource in /home/marketi4/public_html/misc/validation/1.1.1/functions/check_groupon_kod_as.php on line 20
+[27-Feb-2014 10:37:37] PHP Warning:  mysql_num_rows(): supplied argument is not a valid MySQL result resource in /home/marketi4/public_html/misc/validation/1.1.1/functions/check_groupon_kod_as.php on line 20
+[27-Feb-2014 10:37:38] PHP Warning:  mysql_num_rows(): supplied argument is not a valid MySQL result resource in /home/marketi4/public_html/misc/validation/1.1.1/functions/check_groupon_kod_as.php on line 20
+[27-Feb-2014 10:37:38] PHP Warning:  mysql_num_rows(): supplied argument is not a valid MySQL result resource in /home/marketi4/public_html/misc/validation/1.1.1/functions/check_groupon_kod_as.php on line 20
+[27-Feb-2014 10:37:38] PHP Warning:  mysql_num_rows(): supplied argument is not a valid MySQL result resource in /home/marketi4/public_html/misc/validation/1.1.1/functions/check_groupon_kod_as.php on line 20
+[27-Feb-2014 10:37:38] PHP Warning:  mysql_num_rows(): supplied argument is not a valid MySQL result resource in /home/marketi4/public_html/misc/validation/1.1.1/functions/check_groupon_kod_as.php on line 20

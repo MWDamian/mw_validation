@@ -1,0 +1,317 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+
+<!--
+-- niezbędne pliki do implementacji
+-->
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script src="walidacja.js"></script>
+<script>
+	table = 'testy_zapisy';
+	/*additional_data = 'mwid,version';
+	step_effect = 'fadeIn, fast';
+	save_form_data = true;*/
+</script>
+
+
+<script src="skrypty.js"></script>
+<link rel="stylesheet" href="css/style.css" />
+<title>Walidacja - dokumentacja</title>
+<link href='http://fonts.googleapis.com/css?family=Exo+2:400,700,300&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+<nav>
+    <ul>
+        <a href="#implementation">
+            <li>
+                Imlementacja
+            </li>
+        </a>
+        <a href="#inputs">
+            <li>
+                input
+            </li>
+        </a>
+        <a href="#checkboxes">
+            <li>
+                checkbox
+            </li>
+        </a>
+        <a href="#buttons">
+            <li>
+                button
+            </li>
+        </a>
+        <a href="#multiforms">
+            <li>
+                wiele formularzy
+            </li>
+        </a>
+        <a href="#steps">
+            <li>
+                wielostepowe formularze
+            </li>
+        </a>
+        <a href="#errors">
+            <li>
+                obsługa błędów
+            </li>
+        </a>
+        <a href="#functions">
+            <li>
+                spis dostępnych walidacji
+            </li>
+        </a>
+        
+       
+    </ul>
+</nav>
+ <ul>
+	<li class="columns_3">
+    	<h1 id="implementation">
+        	Walidacja - dokumentacja 
+        </h1>
+        <p>
+        	<strong class="title">Implementacja skryptu:</strong><br/>
+			Niezbędne jest wklejenie w sekcji head tego kodu:
+            <blockquote>
+            	<span style="color:#D92B2E">
+                    &lt;script src="http://code.jquery.com/jquery-1.7.2.min.js"&gt;&lt;/script&gt;<br/>
+                    &lt;script src="http://wizards.biarchitects.pl/validation/walidacja.js"&gt;&lt;/script&gt;<br/>
+                    &lt;script&gt;<br/>
+					&nbsp; &nbsp; &nbsp; &nbsp; table = 'testy_zapisy'; <br/>
+                    &nbsp; &nbsp; &nbsp; &nbsp; additional_data = 'mwid, version'; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color:#999999">//OPCJONALNE</span><br/>
+					&lt;/script&gt;<br/>
+                    <br/>
+                </span>
+                <span style="color:#999999"> 
+                    <strong>table</strong> - gdzie <strong>'testy zapisy'</strong> to Twoja tabela w bazie danych, jeśli formularz ma zapisywać się w zewnętrznej bazie danych ustaw wartość 'external'.<br/><br/>
+                    //<strong>OPCJONALNE</strong><br/>
+                    <strong>additional_data</strong> - jeśli chcesz zbierać dodatkowe informacje z url do bazy danych, jeśli chcesz zbierać więcej dancyh, wpisz je po przecinku.<br/>
+                    domyślnie dane nie są zapisywane<br/>
+
+                </span>
+            </blockquote>
+        </p>
+        <hr>
+        	
+            <p >
+        	<strong class="title">WAŻNE</strong><br/><br/>
+        	- wszystkie id muszą być unikalne (nie mogą być zduplikowane),<br/><br/>
+            - id pola input oraz nazwa pola get, będzie będzie wykorzystana jako nazwa kolumny w bazie danych, <br/><br/>
+            - tabela w bazie danych jest tworzona podczas pierwszego wypełnienia formularza, <br/><br/>
+         	</p>
+             <p style="color:#427C06">
+                W razie pytań: <a href="mailto:damian@marketingwizards.pl" target="_blank">damian@marketingwizards.pl</a>
+             </p>	
+        <hr>
+        <p>
+        	<h1 id="inputs">POLA INPUT</h1>
+        	<strong class="title">Wymagane argumenty:</strong><br/>
+            <strong>klasa:</strong> validate <br/>
+            <strong>argument:</strong> data-validation <br/>
+         </p>
+         <br/>
+         <p>
+            <strong class="sub_title">data-validation</strong> - składa się z 3 wartości: <br/>
+            <strong>sposób walidacji:</strong> <a id="swap_section_button_1">zobacz spis możliwych walidacji</a>, <br/>
+            <strong>step formularza w którym znajduje się dane pole:</strong> 1 ,2 , 3 itp. <br/>
+            <strong>miejsce wyświetlania chmury z podpowiedzią:</strong> left, right, top, bottom, <br/>
+        </p>
+        <p>
+        	<strong>Przykładowy wygląd pola input z zaimplementowaną walidacją</strong><br/>
+            <blockquote>
+        		<span class="input">&lt;input type="text" id="name_1"<span class="custom"> class="validate" data-validation="notempty, 1, left" </span>/&gt;</span>
+            </blockquote>
+        </p>
+        <p>
+        	<strong class="title">Opcjonalne argumenty:</strong><br/>
+			<strong class="sub_title">data-label</strong> - samodzielne ustawienie tekstu wyświetlanego w chmurce
+        </p>
+        <blockquote>
+        	<span class="input">&lt;input type="text" id="name_1"<span class="custom_old"> class="validate" data-validation="notempty, 1, left"</span><span class="custom"> data-label="Pole nie może być puste" </span>/&gt;</span>
+        </blockquote>
+        <p>
+			<strong class="sub_title">data-cloud_effect</strong> - samodzielne ustawienie efektu pojawianie się chmury.<br/>
+            Przyjmuje dwie wartości: typ efektu, szybkośc efektu<br/>
+            <strong>Dostępne efekty:</strong> fadeIn (domyślny), slideDown, show. <br/>
+            <strong>Dostępne szybkości:</strong> slow (domyślny), fast, 0-999 (czas w ms).<br/>
+        </p>
+        <blockquote>
+        	<span class="input">&lt;input type="text" id="name_1"<span class="custom_old"> class="validate" data-validation="notempty, 1, left"</span><span class="custom"> data-cloud_effect="slideDown, fast" </span>/&gt;</span>
+        </blockquote>
+        <hr id="checkboxes">
+        <p>
+        	<h1>POLA CHECKBOX</h1>
+        	<strong class="title">Wymagane argumenty:</strong><br/>
+            <strong>klasa:</strong> validate <br/>
+            <strong>argument:</strong> data-validation <br/>
+         </p>
+         <br/>
+         <p>
+            <strong class="sub_title">data-validation</strong> - składa się z 3 wartości: <br/>
+            <strong>tryb walidacji</strong> możliwe jest ustawienie checkboxa jak opcjonalnego: required lub optional, <br/>
+            dostępne wartości: required, optional. <br/>
+            <strong>tryb zapisu</strong> możliwe jest zapisywanie wartości checkboxa do bazy danych,<br/>
+            dostępne wartości: save, no-save. <br/>
+            <strong>miejsce wyświetlania chmury z podpowiedzią:</strong> left, right, top, bottom, <br/>
+        </p>
+        <p>
+        	<strong>Przykładowy wygląd pola checkbox z zaimplementowaną walidacją</strong><br/>
+            <blockquote>
+        		<span class="input">&lt;input type="checkbox" id="chb_1" <span class="custom">class="validate" data-validation="optional, save, left"</span>/&gt;</span>
+            </blockquote>
+        </p>
+        <hr id="buttons">
+        <p>
+        	<h1>POLA BUTTON</h1>
+        	<strong class="title">Wymagane argumenty:</strong><br/>
+            <strong>klasa:</strong> validate <br/>
+            <strong>argument:</strong> data-button <br/>
+         </p>
+         <br/>
+         <p>
+            <strong class="sub_title">data-button</strong> - składa się z 2 wartości: <br/>
+            <strong>0:</strong> zostawić wartość 0, argument jest zarezerwowany dla późniejszych wersji, <br/>
+            <strong>step formularza w którym znajduje się dane pole:</strong> 1 ,2 , 3 itp. <br/>
+        </p>
+        <p>
+        	<strong>Przykładowy wygląd pola button z zaimplementowaną walidacją</strong><br/>
+            <blockquote>
+        		<span class="input">&lt;div id="button_1" <span class="custom">class="validate button" data-button="0, 1</span> &gt;wyślij&lt;/div&gt;</span>
+            </blockquote>
+        </p>
+        <hr id="multiforms">
+        <p >
+        	<h1>OBSŁUGA WIELU FORMULARZY</h1>
+        	<strong class="title">Wymagane argumenty:</strong><br/>
+            <strong>klasa:</strong> validate <br/>
+            <strong>argument:</strong> data-form <br/>
+         </p>
+         <br/>
+         <p>
+            <strong class="sub_title">data-form</strong> - składa się z 2 wartości: <br/>
+            <strong>id fromularza:</strong> id formularza np:. górny, <br/>
+            <strong>id pola formularza w rógnoległym formularzu</strong><br/>
+        </p>
+        <p>
+        	<strong>Przykładowy wygląd pola form z zaimplementowaną walidacją</strong><br/>
+            <blockquote>
+        		<span class="input">&lt;div id="email_dolny" <span class="custom">class="validate button" data-form="dolny, email_gorny</span> &gt;wyślij&lt;/div&gt;</span>
+            </blockquote>
+        </p>
+        <p>
+            <strong>zapisywanie do DB:</strong> można zapisać informację, z którego formularza zostło wysłane zgłoszenie/ <br/>
+            Należy dodać następującą linię do sekcji head: <br/>
+            <blockquote>
+            	<span style="color:#D92B2E">
+                    save_form_data = true;<br/>
+                </span>
+                
+            </blockquote>
+        </p>
+        <hr id="steps">
+            <p >
+                <h1>OBSŁUGA WIELOSTEPOWYCH FORMULARZY</h1>
+                <strong class="title">Wymagane argumenty:</strong><br/>
+                <strong>klasa:</strong> validate <br/>
+                <strong>argument:</strong> data-form <br/>
+             </p>
+             <br/>
+             <p>
+                <strong class="sub_title">data-form</strong> - składa się z 2 wartości: <br/>
+                <strong>id fromularza:</strong> id formularza np:. górny, <br/>
+                <strong>id pola formularza w rógnoległym formularzu</strong><br/>
+                - nazewnictwo stepów: .step_1, .step_2, ..., .step_last (thank you page), <br/>
+                - niewidoczne stepy powinny mieć inline-style: display:none;,<br/>
+                - skrypt obsługuje do 9 stepów, <br/>
+            </p>
+            <p>
+                <strong>Przykładowy wygląd pola form z zaimplementowanymi stepami</strong><br/>
+                <blockquote>
+                	<span style="color:#999999">&lt;section class="step1"&gt;</span><br/>
+                    <span class="input">&nbsp;&nbsp;&nbsp;&nbsp;&lt;input type="text" id="name_1"<span class="custom_old"> class="validate" data-validation="notempty,<span class="custom"> 1, <span class="custom_old">left"</span>  </span>/&gt;</span></span><br/>
+                    <span style="color:#999999"> &lt;/section&gt;</span><br/>
+                </blockquote>
+             </p>  
+             <p>
+                <strong class="sub_title">efekt pojawiania się następnego stepu</strong><br/>
+                <strong>step_effect</strong> - jeśli chcesz samodzielne ustawić efekt pojawiania się następnego stepu. Przyjmuje dwie wartości: typ efektu, szybkośc efektu.<br/>
+                <strong>Dostępne efekty:</strong> fadeIn (domyślny), slideDown, show. <br/>
+                <strong>Dostępne szybkości:</strong> slow (domyślny), fast, 0-999 (czas w ms).<br/>
+                domyślny efekt fadeIn, slow<br/>
+                <blockquote>
+                    <span style="color:#D92B2E">
+                    	step_effect = 'fadeIn, fast'; <br/>
+                    </span>
+                </blockquote>
+            </p>
+         <hr id="errors">
+         <p>
+        	<h1>Obsługa błędów:</h1><br/>
+			Skrypt ma zaimplementowane wykrywanie błędów składni itp. Aby ją uruchomić w url musimy dodać  parametr <span class="custom">debug=true</span>.<br/>
+            <blockquote>
+            	<span >
+                   http://mojadres.com?debug=true
+                </span>
+            </blockquote>
+         </p>
+         <hr >
+         <p id="functions">
+         	<h1>SPIS DOSTĘPNYCH WALIDACJI</h1><br/>
+         	<ul>
+                <li class="columns_2">
+                   
+                    <strong class="sub_title">notempty:</strong> - pole nie może być puste,<br/>
+                    <span class="custom_old">domyślny label : Uzupełnij pole</span><br/>
+                </li>
+                <li class="columns_2">
+                     <span>Uzupełnij pole</span><input type="text" id="input_1" class="validate" data-validation="notempty, 1, top" />
+                </li>
+            </ul>
+            <section class="hr2"></section>
+            
+            <ul>
+                <li class="columns_2">
+                    <strong class="sub_title">name</strong>  - imię - jedno słowo o długości miezy 3-16,<br/>
+                    <span class="custom_old">domyślny label : Podaj poprawne imię</span><br/>
+                </li>
+                <li class="columns_2">
+                     <span>Uzupełnij pole</span><input type="text" id="input_2" class="validate" data-validation="name, 1, top" />
+                </li>
+            </ul>
+            <section class="hr2"></section>
+            
+            <ul>
+                <li class="columns_2">
+                    <strong class="sub_title">email</strong>  - adres e-mail,<br/>
+                    <span class="custom_old">domyślny label : Podaj poprawny adres email</span><br/>
+                </li>
+                <li class="columns_2">
+                     <span>Uzupełnij pole</span><input type="text" id="input_2" class="validate" data-validation="name, 1, top" />
+                </li>
+            </ul>
+            <section class="hr2"></section>
+            
+            <ul>
+                <li class="columns_2">
+                    <strong class="sub_title">phone</strong>  - numer telefonu - numer telefonu 9 liczb,<br/>
+                    <span class="custom_old">domyślny label : Podaj poprawny numer telefonu</span><br/>
+                </li>
+                <li class="columns_2">
+                     <span>Uzupełnij pole</span><input type="text" id="input_2" class="validate" data-validation="name, 1, top" />
+                </li>
+            </ul>
+            <section class="hr2"></section>
+         </p>
+        
+    </li>
+</ul>
+
+
+</body>
+</html>
