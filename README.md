@@ -3,8 +3,8 @@ mw_validation
 
 Implementation
 -------------
-```html
 ### Przykład ###
+```html
 <form id="main_form">
    <section class="step" data-step="1">
        <input type="text" id="email" data-validation="email, top" placeholder="Wpisz adres e-mail"/>
