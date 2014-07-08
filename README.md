@@ -28,12 +28,31 @@ Implementation
 </html>
 ```
 
-*****
 
 ### Inputs ###
 - - -
+
 #### Podstawowy wygląd ####
+
+id - musi być unikalne w bloku form
+data-validation = [rodzaj walidacji(string)],[miejsce pojawiania się tolltipa(string)]
+
 ```html
 <input type="text" id="email" data-validation="email, top" placeholder="Wpisz adres e-mail"/>
 ```
-#### Podstawowy wygląd ####
+
+
+#### Opcjonalne argumenty ####
+
+Tekst wyświetlany w tooltipie
+data-label = [tekst(string)]
+
+```html
+<input type="text" id="email" data-validation="email, top"  data-label="Pole nie może być puste" placeholder="Wpisz adres e-mail" />
+```
+Efekt wyświetlania tooltipa
+data-cloud_effect - [efekt(string), szybkość(string)]
+
+```html
+<input type="text" id="email" data-validation="email, top"  data-cloud_effect="slideDown, fast" placeholder="Wpisz adres e-mail" />
+```
