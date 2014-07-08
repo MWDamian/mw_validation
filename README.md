@@ -3,7 +3,7 @@ mw_validation
 
 Implementation
 -------------
-
+```html
 ### Przykład ###
 ><form id="main_form">
 >   <section class="step" data-step="1">
@@ -14,3 +14,4 @@ Implementation
 >        Dziękujemy
 >   </section>
 ></form>
+```
