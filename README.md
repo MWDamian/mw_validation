@@ -153,6 +153,9 @@ domyślny label : Podaj poprawne imię i nazwisko<br/>
 email - adres e-mail,<br/>
 domyślny label : Podaj poprawny adres email<br/>
 <br/>
+emailexist - adres e-mail, sprawdza czy sitnieje już w bazie<br/>
+domyślny label : Podaj poprawny adres email został już zarejestrowany<br/>
+<br/>
 phone - numer telefonu - numer telefonu 9 liczb,<br/>
 domyślny label : Podaj poprawny numer telefonu<br/>
 <br/>
