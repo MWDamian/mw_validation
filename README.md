@@ -10,7 +10,7 @@ Implementation
    <head>
       <script src="http://resources.marketingwizards.pl/validation/1.1.5/walidacja-source.js"></script>
       <script>
-         table = 'swpanel'; 
+         table = 'przykladowa_tabela'; 
       </script>
    </head>
    <body>
