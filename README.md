@@ -35,7 +35,9 @@ Implementation
 #### Podstawowy wygląd ####
 
 id - musi być unikalne w bloku form<br/>
-data-validation = [rodzaj walidacji(string)],[miejsce pojawiania się tolltipa(string)]
+data-validation = [rodzaj walidacji(string)],[miejsce pojawiania się tolltipa(string)]<br/>
+rodzaj walidacji - email, phone...<br/>
+miejsce pojawiania się tolltipa - top, right, bottom, left<br/>
 
 ```html
 <input type="text" id="email" data-validation="email, top" placeholder="Wpisz adres e-mail"/>
@@ -49,8 +51,11 @@ data-label = [tekst(string)]
 ```html
 <input type="text" id="email" data-validation="email, top"  data-label="Pole nie może być puste" placeholder="Wpisz adres e-mail" />
 ```
-Efekt wyświetlania tooltipa
-data-cloud_effect - [efekt(string), szybkość(string)]
+Efekt wyświetlania tooltipa<br/>
+data-cloud_effect - [efekt(string), szybkość(string)]<br/>
+efekt - fadeIn, slideDown, show<br/>
+szybkość - fast, slow, 500<br/>
+
 ```html
 <input type="text" id="email" data-validation="email, top"  data-cloud_effect="slideDown, fast" placeholder="Wpisz adres e-mail" />
 ```
@@ -62,3 +67,16 @@ data-mask - [maska(string)]
 
 ### input[type='checkbox'] ###
 - - -
+
+#### Podstawowy wygląd ####
+
+id - musi być unikalne w bloku form<br/>
+data-validation = [typ pola(string)],czy zapisywać do bazy danych(string)],[miejsce pojawiania się tolltipa(string)]
+
+typ pola - optional, required<br/>
+szybkość - save, no-save<br/>
+miejsce pojawiania się tolltipa - top, right, bottom, left<br/>
+
+```html
+<input type="checkbox" id="chb_1" data-validation="optional, save, left"/>
+```
