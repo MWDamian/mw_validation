@@ -29,7 +29,7 @@ Implementation
 ```
 
 
-### Inputs ###
+### input[type='text'] ###
 - - -
 
 #### Podstawowy wygląd ####
@@ -54,3 +54,11 @@ data-cloud_effect - [efekt(string), szybkość(string)]
 ```html
 <input type="text" id="email" data-validation="email, top"  data-cloud_effect="slideDown, fast" placeholder="Wpisz adres e-mail" />
 ```
+Maskowanie pola
+data-mask - [maska(string)]
+```html
+<input type="text" id="email" data-validation="email, top" data-mask="+48-999-999-999" placeholder="Wpisz adres e-mail" />
+```
+
+### input[type='checkbox'] ###
+- - -
