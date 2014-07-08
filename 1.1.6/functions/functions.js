@@ -99,6 +99,41 @@ function validation_email(val, label){
 		return {check:true};
 	};
 };
+function validation_emailexist(val, label){
+	
+	global_email = val;
+	
+	if(label == "default"){
+		label = "Podaj poprawny adres email";
+	};
+	var check =  val.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/);;	
+	if(check == null){	
+		return {check:false, label:label};
+	}else{
+		var ajax_response;
+		$.ajax({
+			type : "POST",
+			url  : 'http://resources.marketingwizards.pl/validation/1.1.6/php/check_email.php',
+			dataType : "JSON",
+			async: false,
+			data:{
+				email: val,
+				table: table
+			},
+			success: function(data){
+				console.log(data)
+				ajax_response = data;
+			}			
+		});
+		
+		if(ajax_response.email_unique == true){
+			return {check:true};
+		}else{
+			return {check:false, label:'Podany adres e-mail został jest już zarejestrowany'};
+		}
+		
+	};
+};
 function validation_phone(val, label){
 	
 	if(label == "default"){

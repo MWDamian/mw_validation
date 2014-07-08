@@ -28,8 +28,8 @@ var url_source = window.location.origin;
 * import plików
 * w przypadku błędu zostanie wywołany alert
 */
-$('head').append('<link rel="stylesheet" href="http://resources.marketingwizards.pl/validation/1.1.4/css/default_validation_styles.css" type="text/css" />');
-$.getScript( "http://resources.marketingwizards.pl/validation/1.1.4/functions/functions.js" );
+$('head').append('<link rel="stylesheet" href="http://resources.marketingwizards.pl/validation/1.1.6/css/default_validation_styles.css" type="text/css" />');
+$.getScript( "http://resources.marketingwizards.pl/validation/1.1.6/functions/functions.js" );
 	
 var pathname = $(location).attr('href');
 var parametrs = pathname.split('?');
@@ -103,7 +103,7 @@ $(document).ready(function(){
 			if(script_loaded == false){
 				$.ajax({
 					type: "GET", 
-					url:'http://resources.marketingwizards.pl/validation/1.1.4/js/jquery.maskedinput.min.js',
+					url:'http://resources.marketingwizards.pl/validation/1.1.6/js/jquery.maskedinput.min.js',
 					data :'',
 					async:false,
 					dataType:"script",
@@ -277,7 +277,7 @@ function validation_bad(id, label, cloud, effect1, effect2, duration, type){
 			case 'top':
 				var padding_left  = parseInt($('#'+cloud).css('padding-left' ), 10);
 				var padding_right = parseInt($('#'+cloud).css('padding-right'), 10);
-				$('#'+cloud).css('width',$('#'+id).outerWidth() - padding_left - padding_right +'px');
+				$('#'+cloud).css('min-width',$('#'+id).outerWidth() - padding_left - padding_right +'px');
 				$('#'+cloud).css('height',$('#'+id).height()+'px').css('line-height',$('#'+id).height()+'px');
 				$('#'+cloud).css('top',position.top-$('#'+id).height()-offset/2+'px').css('left', position.left +'px');
 			break;
@@ -285,7 +285,7 @@ function validation_bad(id, label, cloud, effect1, effect2, duration, type){
 				var padding_left  = parseInt($('#'+cloud).css('padding-left' ), 10);
 				var padding_right = parseInt($('#'+cloud).css('padding-right'), 10);
 				$('#'+cloud).css('height',$('#'+id).height()+'px').css('line-height',$('#'+id).height()+'px');
-				$('#'+cloud).css('width',$('#'+id).outerWidth() - padding_left - padding_right +'px');
+				$('#'+cloud).css('min-width',$('#'+id).outerWidth() - padding_left - padding_right +'px');
 				$('#'+cloud).css('top',position.top+$('#'+id).height()+offset+'px').css('left', position.left+'px');
 			break;
 			default:
@@ -501,7 +501,7 @@ function send_form(form_object, data_form_id, last_step){
 		value_array.push(token);
 		console.log('form are sending');
 		$.post(
-			'http://resources.marketingwizards.pl/validation/1.1.4/FormToDatabase.php',{ 
+			'http://resources.marketingwizards.pl/validation/1.1.6/FormToDatabase.php',{ 
 			 fields: id_array, 
 			 values: value_array,
 			 table: table,
@@ -512,14 +512,15 @@ function send_form(form_object, data_form_id, last_step){
 		)
 		if(confirmation_emails != ''){
 			$.post(
-				 'http://resources.marketingwizards.pl/validation/1.1.4/confirmation_email/SendConfimation.php',{ 
+				 'http://resources.marketingwizards.pl/validation/1.1.6/confirmation_email/SendConfimation.php',{ 
 				 fields: id_array, 
 				 values: value_array,
 				 confirmation_emails: confirmation_emails,
 				 url_source: url_source,
 				 title:  document.title,
 				 },
-				 function(data) { 
+				 function(data) {
+					  
 			 	 }
 			 )
 		}
@@ -556,14 +557,13 @@ function step_last(step_effect1, step_effect2, step_effect_duration){
 };
 
 
-function count_conversion(id, label, format, value){
+function count_conversion(id, label, format){
 	document.write = function(text) {
 		$('body').append(text);
 	};
 	window.google_conversion_id = id;
 	window.google_conversion_label = label;
-	window.google_conversion_value = value;
-	window.google_conversion_fomrat = format;
+	window.google_conversion_format = format;
 	window.google_conversion_color = google_conversion.color;
 	window.google_conversion_language = google_conversion.language;
 	window.google_remarketing_only= google_conversion.remarketing;

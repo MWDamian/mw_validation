@@ -56,10 +56,6 @@
 	
 	for($i=0;  $i < $length; $i++){
 		$check = mysql_query("SELECT ".$fields_array[$i]." FROM ".$table."",$con);
-		$query2 = mysql_query("SELECT * FROM ".$table." WHERE email='".$fields_array[$i]."'");	
-		if (mysql_num_rows($query2) != 0){
-				echo "Podany email już istnieje w bazie";
-		}	
 		if($check){
 			echo " column ".$fields_array[$i]." already exists ".mysql_error()."\n ";
 		}else{
