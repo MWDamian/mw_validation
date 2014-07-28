@@ -115,6 +115,14 @@ Konwersję można wywołać również za pomocą funkcji:
 ```
 
 - - -
+### Powiadomienia emailowe ###
+- - -
+Ustawienie powiadomień emailowych dla dowolnych ilości adresów e-mail. Kolejne adresy, podaj po przecinku.
+```html
+confirmatiom_emails = 'damian@marketingwizards.pl';
+```
+
+- - -
 ### Custom emails ###
 - - -
 Do pliku wskazanego pliku php domyślnie przekazywane jest POSTem zmienna user_email zawierająca w sobie adres e-mail wpsisany wpole email.
